@@ -105,7 +105,7 @@ else:
 		premiacao = bsObjMega.find("div",{"class":"related-box gray-text no-margin"}).findAll("p",{"class":"description"})
 		for p in premiacao:
 			email +="<br/><br/>"+ re.sub('\s\s+',' ',p.getText())+"<br/>"
-		#print(strMega4)
+		
 
 		htmlLoto = responseLoto.read()
 		bsObjLoto = BeautifulSoup(htmlLoto)
@@ -124,13 +124,13 @@ else:
 			res = conferir_loteria(mega,Loto[x])
 			email += str(len(res))
 			email +="<br/>"+str(res).strip('[]')
-		print(email)
+		#print(email)
 
 
 		premiacaoLoto = bsObjLoto.find("div",{"class":"related-box gray-text no-margin"}).findAll("p",{"class":"description"})
 		for p1 in premiacaoLoto:
 			email += "<br/><br/>"+re.sub('\s\s+',' ',p1.getText())+"<br/>"
 		
-		print(email)
+		#print(email)
 	
 		mail(email,"Mega-Sena "+ str(concurso).strip('[\'\']') + " - Lotomania "+ str(concursoLoto).strip('[\'\']'))
